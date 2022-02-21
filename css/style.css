@@ -1,0 +1,29 @@
+main {
+  display: block;
+  text-align: center;
+}
+
+div {
+  margin: 20px;
+  padding: 5px;
+}
+
+img {
+  height: 300px;
+  width: 300px;
+}
+
+form {
+  display: block;
+  text-align: center;
+}
+
+.form-error {
+  display: none;
+  color: red;
+}
+
+.passed {
+  display: none;
+  text-align: center;
+}
