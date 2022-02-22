@@ -1,24 +1,31 @@
 const container = document.querySelector(".container");
-const url = "https://api.imgflip.com/get_memes";
+const url = "https://age-of-empires-2-api.herokuapp.com/api/v1/civilizations";
+const cors = "https://noroffcors.herokuapp.com/";
+const corsFix = cors + url;
 
-async function meme() {
-  try {
-    const response = await fetch(url);
-    const result = await response.json();
-    const results = result.data.memes;
-    console.log(results);
+fetch(corsFix)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    createHTML(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+    container.innerHTML = "an error has occured";
+  });
 
-    container.innerHTML = "";
+function createHTML(results) {
+  const aoe = results.civilizations;
 
-    results.forEach(function (json) {
-      container.innerHTML += `<a href="details.html?id=${json.id}">
-                                <h2>Name: ${json.name}</h2>
-                                <p>Box-count: ${json.box_count}</p>
-                                <div><img src="${json.url}"</img></div>
-                            </a>`;
-    });
-  } catch (error) {
-    container.innerHTML = "Something is wrong in the memeworld";
+  container.innerHTML = "";
+  for (let i = 0; i < aoe.length; i++) {
+    console.log(aoe[i]);
+
+    container.innerHTML += `<div><a href="details.html">
+                              <h2>Name: ${aoe[i].name}</h2></a>
+                              <p>Expansion: ${aoe[i].expansion}</p>
+                              <p>Bonus: ${aoe[i].team_bonus}</p>
+                           </div>`;
   }
 }
-meme();
