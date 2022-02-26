@@ -11,9 +11,11 @@ const corsFix = cors + url + id;
 async function aoe() {
   try {
     const response = await fetch(corsFix);
+
     const result = await response.json();
-    console.log(result);
+
     container.innerHTML = "";
+
     container.innerHTML = `<div>
                             <h2>Name: ${result.name}</h2>
                             <p>Civilization-bonus: ${result.civilization_bonus}</p>

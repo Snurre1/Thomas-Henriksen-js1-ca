@@ -11,7 +11,6 @@ fetch(corsFix)
     createHTML(data);
   })
   .catch(function (error) {
-    console.log(error);
     container.innerHTML = "an error has occured";
   });
 
@@ -20,8 +19,6 @@ function createHTML(results) {
 
   container.innerHTML = "";
   for (let i = 0; i < aoe.length; i++) {
-    console.log(aoe[i]);
-
     container.innerHTML += `<div><a href="details.html?id=${aoe[i].id}">
                               <h2>Name: ${aoe[i].name}</h2></a>
                               <p>Expansion: ${aoe[i].expansion}</p>
