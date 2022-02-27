@@ -1,5 +1,5 @@
 const container = document.querySelector(".container");
-
+const nameTag = document.querySelector("title");
 const queryString = document.location.search;
 
 const params = new URLSearchParams(queryString);
@@ -13,6 +13,8 @@ async function aoe() {
     const response = await fetch(corsFix);
 
     const result = await response.json();
+
+    nameTag.innerHTML = `${result.name}`;
 
     container.innerHTML = "";
 
